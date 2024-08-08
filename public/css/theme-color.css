@@ -1,0 +1,31 @@
+
+.header .navbar-dark {
+  background-color: #385c90; /* color of navbar */
+}
+
+.bg-theme-colored {
+   background-color: #385c90 !important;  /*color time */
+}
+.text-theme-colored {
+  color:#789dcf !important;/*  color of the title  */
+}
+
+.line-bottom:after {
+  border: 1px solid #385c90;
+}
+
+.footer .footer-widget .line-bottom:after {
+  border: 1px solid #385c90;
+}
+.about-icon .icon {
+  background-color: #153056;
+}
+/* #e29c16 */
+.bg-theme-colored,
+.event .entry-header .entry-date,
+.blog-post .post .entry-header .entry-date {
+  background-color: #385c90 !important;
+}
+.post .entry-content .entry-date {
+  background-color: #385c90;
+}

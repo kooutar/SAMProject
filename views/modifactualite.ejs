@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Actualités</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Assurez-vous que le chemin est correct -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4f6d7a;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #e38e10;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #d1902f;
+        }
+        a button {
+            background-color: #4f6d7a;
+            margin-left: 10px;
+        }
+        a button:hover {
+            background-color: #385c90;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modifier les Actualités</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Date de Publication</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (actualites.length > 0) { %>
+                <% actualites.forEach(function(actualite) { %>
+                    <tr>
+                        <td><%= actualite.id %></td>
+                        <td><%= actualite.titre %></td>
+                        <td><%= actualite.contenu %></td>
+                        <td><%= actualite.date_publication %></td>
+                        <td><%= actualite.image %></td>
+                        <td>
+                            <form action="/delete-actualite/<%= actualite.id %>" method="POST" style="display:inline;">
+                                <button type="submit">Supprimer</button>
+                            </form>
+                            <a href="/edit-actualite/<%= actualite.id %>">
+                                <button>Modifier</button>
+                            </a>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="6">Aucune actualité trouvée</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités</title>
+    <link rel="stylesheet" href="public/css/actuialite.css"> <!-- Lien vers votre fichier CSS -->
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar {
+    background-color: #385c90;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 10px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  padding-right: 90px;
+  
+      
+}
+
+.navbar a {
+    display: inline-block;
+    color: #ffffff;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-left: 10px;
+}
+
+.navbar a:hover {
+    background-color: #d1902f;
+    color: #ffffff;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="/">Accueil</a>
+    <a href="#actuialite">Actualité</a>
+    <a href="/liste-des-candidatures">Événements</a>
+  
+  
+  
+    
+</div>
+
+  <section id="actuialite">
+    <h1 style="margin-top: 40px;">Actualités</h1>
+    <div class="card-container">
+        <% actuialites.forEach(function(actuialite) { %>
+            <div class="card">
+                <img  class="imag" src="<%= actuialite.image %>" alt="<%= actuialite.titre %>">
+                <div class="card-content">
+                    <h2 class="card-title"><%= actuialite.titre %></h2>
+                    <p class="card-date"> Publie le <%= new Date(actuialite.date_publication).toLocaleDateString('fr-FR') %></p>
+                    <p class="card-description"><%= actuialite.contenu %></p>
+                 </div>
+            </div>
+        <% }); %>
+    </div>
+</section>
+</body>
+</html>

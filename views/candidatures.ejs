@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Candidatures</title>
+    <style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(../public/images/bgins.jpg);
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+  color: white;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    max-width: 1200px; 
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #4674b6;
+    color: #ffffff;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #4b87da; 
+}
+
+th {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; 
+}
+
+tr:hover {
+    background-color: #6197e2;
+    transition: background-color 0.3s ease;
+}
+
+td a.btn-link {
+    display: inline-block;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-accept {
+    background-color: #28a745; 
+    margin-right: 5px;
+}
+
+.btn-reject {
+    background-color: #dc3545; 
+}
+
+.btn-link:hover {
+    opacity: 0.8;
+}
+
+td[colspan="8"] {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    font-size: 16px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>LISTE DES CANDIDATURES POUR L'ÉVÉNEMENT</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>Profession</th>
+                <th>Organisation</th>
+                <th>statue</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (candidatures.length > 0) { %>
+                <% candidatures.forEach(function(candidature) { %>
+                    <tr>
+                        <td><%= candidature.nom %></td>
+                        <td><%= candidature.prenom %></td>
+                        <td><%= candidature.telephone %></td>
+                        <td><%= candidature.email %></td>
+                        <td><%= candidature.adresse %></td>
+                        <td><%= candidature.profession %></td>
+                        <td><%= candidature.organisation %></td>
+                        <td>
+                            <a href="/update-candidature/approuvee/<%= candidature.email %>" class="btn-link btn-accept">approuvée</a>
+                            <a href="/update-candidature/rejetee/<%= candidature.email %>" class="btn-link btn-reject">rejetée</a>
+                            
+
+                        </td>
+                            
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="8">Aucune candidature trouvée pour cet événement.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>
